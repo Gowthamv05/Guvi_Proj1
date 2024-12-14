@@ -1,4 +1,6 @@
 streamlit
-psycopg2-2.9.10
+pg8000
 pandas
-sqlalchemy
+Matplotlib
+plotly
+

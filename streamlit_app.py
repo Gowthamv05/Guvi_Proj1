@@ -34,7 +34,7 @@ def main():
 
 guvi_queries = {
     "Top 10 highest revenue generating products": 
-        "select p.product_id,p.sub_category,sum(o.sale_price) as revenue from product_data p join order_data o on p.product_id=o.product_id group by p.product_id order by revenue desc limit 10;",
+        "select p.product_id,p.sub_category,sum(o.sale_price) as revenue from product_data p join order_data o on p.product_id=o.product_id group by p.product_id,p.sub_category order by revenue desc limit 10;",
     
     "Top 5 cities with the highest profit margins": 
         "select city,avg(case when sale_price = 0 then 0 else ((profit/sale_price)*100) end)as profit_margin from order_data group by city order by profit_margin desc limit 5;",

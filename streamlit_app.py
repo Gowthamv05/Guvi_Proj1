@@ -67,10 +67,10 @@ guvi_queries = {
 my_queries={
 
         "Identify the 10 products with the highest quantity sold, including their total revenue and profit":
-    "select p.product_id, p.category, sum(o.quantity) as Total_quantity, round(sum(o.sale_price)::numeric,2) as Revenue, round(sum(o.profit)::numeric,2) as profit from product_data p join order_data o on p.product_id=o.product_id group by p.product_id order by sum(o.quantity) desc limit 10;",
+    "select p.product_id, p.category, sum(o.quantity) as Total_quantity, round(sum(o.sale_price)::numeric,2) as Revenue, round(sum(o.profit)::numeric,2) as profit from product_data p join order_data o on p.product_id=o.product_id group by p.product_id,p.category order by sum(o.quantity) desc limit 10;",
 
      "Determine the top 5 states with the highest total sales revenue with category.":
-    "select o.state, p.product_id,p.category,round(sum(o.sale_price)::numeric,2) from order_data o join product_data p on o.product_id=p.product_id group by state,p.product_id order by sum(sale_price) desc limit 5;",
+    "select o.state, p.product_id,p.category,round(sum(o.sale_price)::numeric,2) from order_data o join product_data p on o.product_id=p.product_id group by o.state,p.product_id,p.category order by sum(sale_price) desc limit 5;",
 "Count the total number of orders placed for each product category, include the quantity and revenue":
 "select p.category,sum(o.order_id) as order_count,o.quantity,round(sum(o.sale_price)::numeric,2) as revenue from product_data p join order_data o on p.product_id=o.product_id group by p.category,o.quantity;",
 "Rank all regions based on the total quantity of products sold include order count":
@@ -97,7 +97,7 @@ my_queries={
 }
 Business_Insights={
     "Top-Selling Products":
-        "select p.product_id,p.sub_category,sum(o.sale_price),rank() over(order by sum(o.sale_price) desc) as rank from product_data p join order_data o on p.product_id=o.product_id group by p.product_id;",
+        "select p.product_id,p.sub_category,sum(o.sale_price),rank() over(order by sum(o.sale_price) desc) as rank from product_data p join order_data o on p.product_id=o.product_id group by p.product_id,p.sub_category;",
 "Monthly Sales Analysis":
 "Select order_year, order_month, SUM(sale_price) AS total_sales FROM order_data GROUP BY order_year, order_month ORDER BY order_year, order_month;",
 "Product Performance":

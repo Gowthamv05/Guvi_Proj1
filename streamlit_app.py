@@ -148,7 +148,7 @@ if query:
             fig = px.bar(result_df, x="product_id", y="total_quantity", color="profit", title="Top Products by Quantity and Profit")
             st.plotly_chart(fig)
         elif "order_month" in result_df.columns:
-            st.line_chart(result_df.set_index("order_month")["total_sales"])
+            st.line_chart(result_df.set_index("order_month")["profit"])
         elif "state" in result_df.columns:
             st.subheader("State-wise Analysis")
             fig = px.bar(result_df, x="state", y=result_df.columns[2], color="state", title="Top States by Revenue or Quantity")

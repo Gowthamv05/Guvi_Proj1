@@ -7,7 +7,7 @@ import plotly.express as px
 # Connect to the database
 def create_connection():
         connection = pg8000.connect(
-            host="gouthamdb.cjsam84ckn23.ap-south-1.rds.amazonaws.com",
+            host="database-1.cdsce8eqs025.ap-south-1.rds.amazonaws.com",
             database="postgres",
             user="postgres",
             password="Amazonaws",
